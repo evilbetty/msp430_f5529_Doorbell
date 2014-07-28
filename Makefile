@@ -5,7 +5,7 @@ CPU             = msp430f5529
 # Optimisation level
 OPTIMIZATION	= -O1
 
-CFLAGS          = -ma20 -mmcu=$(CPU) $(OPTIMIZATION) -Wall -g
+CFLAGS          = -mmcu=$(CPU) $(OPTIMIZATION) -Wall -g
 SOURCES			= $(wildcard *.c)
 OBJECTS			= $(SOURCES:.c=.o)
 CC              = msp430-gcc
