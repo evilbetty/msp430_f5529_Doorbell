@@ -1,5 +1,5 @@
 # Project name
-NAME            = testfile
+NAME            = doorbell
 # MSP430 MCU to compile for
 CPU             = msp430f5529
 # Optimisation level
