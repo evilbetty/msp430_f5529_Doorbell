@@ -2,9 +2,9 @@
 #include <msp430.h>
 #include <stdint.h>
 #include "clockinit.h"
-#include "comein.h"
+#include "audio.h"
 
-#define FREQ					32000000
+#define FREQ					25000000
 
 #define GREEN_LED				BIT7
 #define RED_LED					BIT0
@@ -16,10 +16,10 @@
 
 
 // Get the size of our data array
-const uint16_t binary_data_size = sizeof( comein_raw ) / sizeof( comein_raw[0] );
+const uint16_t binary_data_size = sizeof( audio_raw ) / sizeof( audio_raw[0] );
 
 // Data location (start higher than binary_data_size to not play at reset)
-volatile uint16_t counter = ( sizeof( comein_raw ) / sizeof( comein_raw[0] ) ) + 1;
+volatile uint16_t counter = ( sizeof( audio_raw ) / sizeof( audio_raw[0] ) ) + 1;
 
 // Sample buffer
 volatile uint8_t sample;
@@ -76,7 +76,7 @@ int main()
         if ( counter <= binary_data_size ) 
         {   // If data is still playing do LPM0 to keep
             // the timer running and audio playing.
-			sample = comein_raw[counter++];
+			sample = audio_raw[counter++];
             LPM0;
         }
         else 
